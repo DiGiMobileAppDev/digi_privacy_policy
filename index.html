@@ -3,455 +3,686 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DIGI Express Privacy Policy">
     <title>DIGI Express - Privacy Policy</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        :root {
+            --bg-1: #f4f7f8;
+            --bg-2: #e3edf0;
+            --card: #ffffff;
+            --ink: #102a33;
+            --muted: #4f6570;
+            --line: #d7e3e8;
+            --brand: #0f8b8d;
+            --brand-2: #1d6fa5;
+            --accent: #ff7f50;
+            --shadow: 0 18px 45px rgba(16, 42, 51, 0.12);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'IBM Plex Sans', 'Trebuchet MS', sans-serif;
+            color: var(--ink);
+            line-height: 1.65;
             min-height: 100vh;
-            padding: 20px;
+            background:
+                radial-gradient(circle at 8% 0%, rgba(15, 139, 141, 0.16), transparent 38%),
+                radial-gradient(circle at 95% 18%, rgba(255, 127, 80, 0.14), transparent 36%),
+                linear-gradient(160deg, var(--bg-1), var(--bg-2));
+            padding: 24px;
         }
 
-        .container {
-            max-width: 900px;
+        .page {
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
 
-        .header::before {
+        .ambient-shape {
+            position: fixed;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.36;
+            z-index: 0;
+            filter: blur(2px);
+            animation: drift 18s ease-in-out infinite alternate;
+        }
+
+        .ambient-a {
+            top: -140px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(15, 139, 141, 0.45), transparent 68%);
+        }
+
+        .ambient-b {
+            bottom: -140px;
+            left: -110px;
+            animation-delay: 3s;
+            background: radial-gradient(circle, rgba(255, 127, 80, 0.4), transparent 70%);
+        }
+
+        @keyframes drift {
+            from {
+                transform: translateY(-10px) scale(0.96);
+            }
+            to {
+                transform: translateY(18px) scale(1.06);
+            }
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand), var(--accent));
+            z-index: 100;
+            transition: width 0.12s linear;
+        }
+
+        .hero {
+            background: linear-gradient(130deg, rgba(15, 139, 141, 0.95), rgba(29, 111, 165, 0.94));
+            color: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            padding: 42px 38px;
+            margin-bottom: 20px;
+        }
+
+        .hero::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, transparent 20%);
-            background-size: 30px 30px;
-            animation: float 20s linear infinite;
+            inset: 0;
+            background:
+                linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0%, transparent 42%),
+                repeating-linear-gradient(
+                    -35deg,
+                    rgba(255, 255, 255, 0.06),
+                    rgba(255, 255, 255, 0.06) 16px,
+                    transparent 16px,
+                    transparent 34px
+                );
+            pointer-events: none;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-30px) rotate(360deg); }
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(14px);
+            animation: heroIn 0.75s ease forwards;
         }
 
-        .header h1 {
-            font-size: 2.5em;
+        @keyframes heroIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand {
+            font-family: 'Space Grotesk', 'Verdana', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', 'Verdana', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.08;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
         }
 
-        .header .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
+        .hero-sub {
+            font-size: 1.05rem;
+            max-width: 700px;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 18px;
         }
 
-        .content {
-            padding: 30px;
+        .hero-meta {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
-        .last-updated {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 30px;
-            padding: 15px;
-            background: rgba(79, 172, 254, 0.1);
-            border-radius: 10px;
-            border-left: 4px solid #4facfe;
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        .toc-panel {
+            position: sticky;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(16, 42, 51, 0.1);
+            border-radius: var(--radius-md);
+            box-shadow: 0 12px 28px rgba(16, 42, 51, 0.09);
+            backdrop-filter: blur(10px);
+            padding: 18px;
+        }
+
+        .toc-panel h2 {
+            font-family: 'Space Grotesk', 'Verdana', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--brand-2);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         .toc {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid #e9ecef;
+            list-style: none;
+            display: grid;
+            gap: 7px;
         }
 
-        .toc h3 {
-            color: #4facfe;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-        }
-
-        .toc ol {
-            padding-left: 20px;
-        }
-
-        .toc li {
-            margin-bottom: 8px;
-            cursor: pointer;
-            color: #555;
-            transition: color 0.3s ease;
-        }
-
-        .toc li:hover {
-            color: #4facfe;
-        }
-
-        .section {
-            margin-bottom: 35px;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            border-left: 4px solid #4facfe;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e9ecef;
-        }
-
-        .section h3 {
-            color: #34495e;
-            margin: 20px 0 15px 0;
-            font-size: 1.2em;
-        }
-
-        .section p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .section ul, .section ol {
-            margin: 15px 0;
-            padding-left: 25px;
-        }
-
-        .section li {
-            margin-bottom: 8px;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #4facfe;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-        }
-
-        .contact-info a {
-            color: #fff;
+        .toc a {
             text-decoration: none;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            transition: background 0.3s ease;
+            color: var(--muted);
+            padding: 7px 9px;
+            border-radius: 10px;
+            display: block;
+            font-size: 0.93rem;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
         }
 
-        .contact-info a:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .toc a:hover {
+            color: var(--ink);
+            background: rgba(15, 139, 141, 0.1);
         }
 
-        .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 30px;
+        .toc a.active {
+            color: var(--ink);
+            border-color: rgba(15, 139, 141, 0.24);
+            background: rgba(15, 139, 141, 0.15);
+            font-weight: 600;
+        }
+
+        .content {
+            display: grid;
+            gap: 16px;
+        }
+
+        .callout {
+            background: linear-gradient(125deg, rgba(15, 139, 141, 0.16), rgba(29, 111, 165, 0.12));
+            border: 1px solid rgba(15, 139, 141, 0.24);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            box-shadow: 0 12px 26px rgba(16, 42, 51, 0.08);
+            color: #113744;
+        }
+
+        .policy-card {
+            background: var(--card);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(16, 42, 51, 0.1);
+            box-shadow: 0 14px 30px rgba(16, 42, 51, 0.08);
+            padding: 24px;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: transform 0.45s ease, opacity 0.45s ease;
+        }
+
+        .policy-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .policy-card h2 {
+            font-family: 'Space Grotesk', 'Verdana', sans-serif;
+            font-size: clamp(1.28rem, 2.2vw, 1.6rem);
+            color: var(--ink);
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .policy-card h3 {
+            font-size: 1.05rem;
+            color: #1a4f61;
+            margin: 16px 0 8px;
+            font-weight: 700;
+        }
+
+        .policy-card p {
+            margin-bottom: 12px;
+            color: #29424b;
+        }
+
+        .policy-card ul,
+        .policy-card ol {
+            margin-left: 20px;
+            margin-bottom: 12px;
+            color: #29424b;
+        }
+
+        .policy-card li {
+            margin-bottom: 7px;
+        }
+
+        .inline-note {
+            margin-top: 14px;
+            border-left: 4px solid var(--accent);
+            background: rgba(255, 127, 80, 0.12);
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .contact-block {
+            background: linear-gradient(145deg, #0d3d4d, #0f566f);
+            color: #f1f7fa;
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-block h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        .contact-block p {
+            color: rgba(241, 247, 250, 0.95);
+        }
+
+        a {
+            color: #0f6587;
+            font-weight: 600;
+        }
+
+        .contact-block a {
+            color: #ffffff;
+            text-decoration-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .site-footer {
+            margin-top: 18px;
+            border-radius: var(--radius-md);
+            background: #102a33;
+            color: #dde8ec;
             text-align: center;
-            margin-top: 40px;
+            padding: 20px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 10px;
+        .site-footer p + p {
+            margin-top: 6px;
+        }
+
+        .to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 24px rgba(16, 42, 51, 0.24);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+        }
+
+        .to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 980px) {
+            body {
+                padding: 14px;
             }
-            
-            .header h1 {
-                font-size: 2em;
+
+            .hero {
+                padding: 30px 22px;
             }
-            
-            .content {
-                padding: 20px;
+
+            .layout {
+                grid-template-columns: 1fr;
             }
-            
-            .section {
-                padding: 20px;
+
+            .toc-panel {
+                position: relative;
+                top: 0;
+            }
+
+            .toc {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        .smooth-scroll {
-            scroll-behavior: smooth;
+        @media (max-width: 680px) {
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-card,
+            .callout {
+                padding: 18px;
+            }
+
+            .hero-meta {
+                display: block;
+                width: fit-content;
+            }
         }
     </style>
 </head>
-<body class="smooth-scroll">
-    <div class="container">
-        <div class="header">
-            <h1>DIGI Express</h1>
-            <div class="subtitle">Privacy Policy</div>
-        </div>
+<body id="top">
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+    <div class="ambient-shape ambient-a" aria-hidden="true"></div>
+    <div class="ambient-shape ambient-b" aria-hidden="true"></div>
 
-        <div class="content">
-            <div class="last-updated">
-                <strong>Last updated: July 17, 2025</strong>
+    <div class="page">
+        <header class="hero">
+            <div class="hero-inner">
+                <p class="brand">DIGI Express</p>
+                <h1>Privacy Policy</h1>
+                <p class="hero-sub">DIGI Express is dedicated to protecting your privacy and ensuring a safe user experience. Our app enables users to purchase products from other countries and provides international delivery services to get those products delivered safely and efficiently.</p>
+                <p class="hero-meta">Last updated: July 17, 2025</p>
             </div>
+        </header>
 
-            <div class="highlight">
-                <p><strong>DIGI Express</strong> is dedicated to protecting your privacy and ensuring a safe user experience. Our app enables users to purchase products from other countries and provides international delivery services to get those products delivered safely and efficiently.</p>
-            </div>
-
-            <div class="toc">
-                <h3>Table of Contents</h3>
-                <ol>
-                    <li onclick="scrollToSection('section1')">What Information Do We Collect?</li>
-                    <li onclick="scrollToSection('section2')">How Do We Process Your Information?</li>
-                    <li onclick="scrollToSection('section3')">What Legal Bases Do We Rely On?</li>
-                    <li onclick="scrollToSection('section4')">When and With Whom Do We Share Information?</li>
-                    <li onclick="scrollToSection('section5')">Do We Use Cookies and Tracking Technologies?</li>
-                    <li onclick="scrollToSection('section6')">How Long Do We Keep Your Information?</li>
-                    <li onclick="scrollToSection('section7')">How Do We Keep Your Information Safe?</li>
-                    <li onclick="scrollToSection('section8')">Do We Collect Information from Minors?</li>
-                    <li onclick="scrollToSection('section9')">What Are Your Privacy Rights?</li>
-                    <li onclick="scrollToSection('section10')">Controls for Do-Not-Track Features</li>
-                    <li onclick="scrollToSection('section11')">US Residents' Specific Privacy Rights</li>
-                    <li onclick="scrollToSection('section12')">Updates to This Notice</li>
-                    <li onclick="scrollToSection('section13')">Contact Information</li>
+        <main class="layout" aria-label="Privacy policy content">
+            <aside class="toc-panel" aria-label="Table of contents">
+                <h2>Table of Contents</h2>
+                <ol class="toc">
+                    <li><a href="#section1">1. What Information Do We Collect?</a></li>
+                    <li><a href="#section2">2. How Do We Process Your Information?</a></li>
+                    <li><a href="#section3">3. What Legal Bases Do We Rely On?</a></li>
+                    <li><a href="#section4">4. When and With Whom Do We Share Information?</a></li>
+                    <li><a href="#section5">5. Do We Use Cookies and Tracking Technologies?</a></li>
+                    <li><a href="#section6">6. How Long Do We Keep Your Information?</a></li>
+                    <li><a href="#section7">7. How Do We Keep Your Information Safe?</a></li>
+                    <li><a href="#section8">8. Do We Collect Information from Minors?</a></li>
+                    <li><a href="#section9">9. What Are Your Privacy Rights?</a></li>
+                    <li><a href="#section10">10. Controls for Do-Not-Track Features</a></li>
+                    <li><a href="#section11">11. US Residents' Specific Privacy Rights</a></li>
+                    <li><a href="#section12">12. Updates to This Notice</a></li>
+                    <li><a href="#section13">13. Contact Information</a></li>
                 </ol>
+            </aside>
+
+            <div class="content">
+                <section class="callout" aria-label="Policy highlight">
+                    <p><strong>DIGI Express</strong> is dedicated to protecting your privacy and ensuring a safe user experience. Our app enables users to purchase products from other countries and provides international delivery services to get those products delivered safely and efficiently.</p>
+                </section>
+
+                <section class="policy-card" id="section1">
+                    <h2>1. What Information Do We Collect?</h2>
+
+                    <h3>Personal Information You Provide</h3>
+                    <p>We collect personal information that you voluntarily provide to us when you:</p>
+                    <ul>
+                        <li>Register for our services</li>
+                        <li>Express interest in our products</li>
+                        <li>Participate in activities on our platform</li>
+                        <li>Contact us for support</li>
+                    </ul>
+
+                    <h3>Information We Collect Includes:</h3>
+                    <ul>
+                        <li><strong>Personal Details:</strong> Names, phone numbers, mailing addresses</li>
+                        <li><strong>Authentication Data:</strong> Passwords and account credentials</li>
+                        <li><strong>Location Data:</strong> Geolocation information for delivery services</li>
+                        <li><strong>Device Information:</strong> Mobile device details, operating system, browser type</li>
+                        <li><strong>Payment Information:</strong> Processed through our internal wallet system</li>
+                    </ul>
+
+                    <div class="inline-note">
+                        <p><strong>Payment Processing:</strong> DIGI Express uses an internal wallet system. Users initiate payments externally by scanning QR codes through their own banking apps. We do not directly collect full credit card details.</p>
+                    </div>
+                </section>
+
+                <section class="policy-card" id="section2">
+                    <h2>2. How Do We Process Your Information?</h2>
+
+                    <p>We process your personal information for the following purposes:</p>
+                    <ul>
+                        <li><strong>Account Management:</strong> Create and maintain user accounts</li>
+                        <li><strong>Service Delivery:</strong> Facilitate international delivery services</li>
+                        <li><strong>Customer Support:</strong> Respond to inquiries and provide assistance</li>
+                        <li><strong>Order Management:</strong> Process purchases, payments, and deliveries</li>
+                        <li><strong>Security:</strong> Protect our services and prevent fraud</li>
+                        <li><strong>Analytics:</strong> Improve our services and user experience</li>
+                    </ul>
+                </section>
+
+                <section class="policy-card" id="section3">
+                    <h2>3. Legal Bases for Processing</h2>
+
+                    <p>We process your information based on:</p>
+                    <ul>
+                        <li><strong>Consent:</strong> When you give us permission for specific purposes</li>
+                        <li><strong>Contract Performance:</strong> To fulfill our services to you</li>
+                        <li><strong>Legitimate Interests:</strong> To improve our services and ensure security</li>
+                        <li><strong>Legal Compliance:</strong> To comply with applicable laws and regulations</li>
+                    </ul>
+                </section>
+
+                <section class="policy-card" id="section4">
+                    <h2>4. Information Sharing</h2>
+
+                    <p>We may share your information with:</p>
+                    <ul>
+                        <li><strong>Service Providers:</strong> Third-party vendors who help deliver our services</li>
+                        <li><strong>Google Services:</strong> Google Maps SDK for location services</li>
+                        <li><strong>Business Partners:</strong> Only when necessary for order fulfillment</li>
+                    </ul>
+
+                    <div class="inline-note">
+                        <p><strong>We do not sell your personal information</strong> to third parties for marketing purposes.</p>
+                    </div>
+                </section>
+
+                <section class="policy-card" id="section5">
+                    <h2>5. Cookies and Tracking Technologies</h2>
+
+                    <p>We use cookies and similar technologies to:</p>
+                    <ul>
+                        <li>Maintain security and prevent fraud</li>
+                        <li>Remember your preferences</li>
+                        <li>Analyze service usage</li>
+                        <li>Provide personalized experiences</li>
+                    </ul>
+                </section>
+
+                <section class="policy-card" id="section6">
+                    <h2>6. Data Retention</h2>
+
+                    <p>We retain your personal information only as long as necessary for the purposes outlined in this policy, or as required by law. When you close your account, we will delete or anonymize your personal information, except where retention is required for legal compliance.</p>
+                </section>
+
+                <section class="policy-card" id="section7">
+                    <h2>7. Information Security</h2>
+
+                    <p>We implement appropriate technical and organizational security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+                </section>
+
+                <section class="policy-card" id="section8">
+                    <h2>8. Information from Minors</h2>
+
+                    <p>We do not knowingly collect personal information from children under 18 years of age. If we learn that we have collected information from a minor, we will promptly delete such information from our records.</p>
+                </section>
+
+                <section class="policy-card" id="section9">
+                    <h2>9. Your Privacy Rights</h2>
+
+                    <p>Depending on your location, you may have the following rights:</p>
+                    <ul>
+                        <li>Access your personal information</li>
+                        <li>Correct inaccuracies in your data</li>
+                        <li>Delete your personal information</li>
+                        <li>Object to processing of your data</li>
+                        <li>Data portability</li>
+                        <li>Withdraw consent</li>
+                    </ul>
+
+                    <div class="inline-note">
+                        <p><strong>Account Deletion:</strong> To delete your account, email us at <a href="mailto:koyyotrabothffc001@gmail.com">koyyotrabothffc001@gmail.com</a> with "Account Deletion Request" in the subject line. We will process your request within 7 business days.</p>
+                    </div>
+                </section>
+
+                <section class="policy-card" id="section10">
+                    <h2>10. Do-Not-Track Features</h2>
+
+                    <p>We do not currently respond to Do-Not-Track signals due to the lack of a uniform technology standard. If a standard is adopted in the future, we will update this policy accordingly.</p>
+                </section>
+
+                <section class="policy-card" id="section11">
+                    <h2>11. US Residents' Privacy Rights</h2>
+
+                    <p>Residents of certain US states have additional privacy rights under state laws. These may include rights to know what personal information is collected, request deletion, and opt-out of certain data processing activities.</p>
+                </section>
+
+                <section class="policy-card" id="section12">
+                    <h2>12. Updates to This Policy</h2>
+
+                    <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date.</p>
+                </section>
+
+                <section class="policy-card" id="section13">
+                    <h2>13. Contact Information</h2>
+
+                    <div class="contact-block">
+                        <h3>DIGI Express</h3>
+                        <p>Address: Ou Baek K'am, Sen Sok District, Phnom Penh, Cambodia</p>
+                        <p>Phnom Penh, Phnom Penh Capital 12101, Cambodia</p>
+                        <p>Email: <a href="mailto:koyyotrabothffc001@gmail.com">koyyotrabothffc001@gmail.com</a></p>
+                        <p>Data Subject Requests: <a href="mailto:digiexpress355@gmail.com">digiexpress355@gmail.com</a></p>
+                    </div>
+                </section>
             </div>
+        </main>
 
-            <div class="section" id="section1">
-                <h2>1. What Information Do We Collect?</h2>
-                
-                <h3>Personal Information You Provide</h3>
-                <p>We collect personal information that you voluntarily provide to us when you:</p>
-                <ul>
-                    <li>Register for our services</li>
-                    <li>Express interest in our products</li>
-                    <li>Participate in activities on our platform</li>
-                    <li>Contact us for support</li>
-                </ul>
-
-                <h3>Information We Collect Includes:</h3>
-                <ul>
-                    <li><strong>Personal Details:</strong> Names, phone numbers, mailing addresses</li>
-                    <li><strong>Authentication Data:</strong> Passwords and account credentials</li>
-                    <li><strong>Location Data:</strong> Geolocation information for delivery services</li>
-                    <li><strong>Device Information:</strong> Mobile device details, operating system, browser type</li>
-                    <li><strong>Payment Information:</strong> Processed through our internal wallet system</li>
-                </ul>
-
-                <div class="highlight">
-                    <p><strong>Payment Processing:</strong> DIGI Express uses an internal wallet system. Users initiate payments externally by scanning QR codes through their own banking apps. We do not directly collect full credit card details.</p>
-                </div>
-            </div>
-
-            <div class="section" id="section2">
-                <h2>2. How Do We Process Your Information?</h2>
-                
-                <p>We process your personal information for the following purposes:</p>
-                <ul>
-                    <li><strong>Account Management:</strong> Create and maintain user accounts</li>
-                    <li><strong>Service Delivery:</strong> Facilitate international delivery services</li>
-                    <li><strong>Customer Support:</strong> Respond to inquiries and provide assistance</li>
-                    <li><strong>Order Management:</strong> Process purchases, payments, and deliveries</li>
-                    <li><strong>Security:</strong> Protect our services and prevent fraud</li>
-                    <li><strong>Analytics:</strong> Improve our services and user experience</li>
-                </ul>
-            </div>
-
-            <div class="section" id="section3">
-                <h2>3. Legal Bases for Processing</h2>
-                
-                <p>We process your information based on:</p>
-                <ul>
-                    <li><strong>Consent:</strong> When you give us permission for specific purposes</li>
-                    <li><strong>Contract Performance:</strong> To fulfill our services to you</li>
-                    <li><strong>Legitimate Interests:</strong> To improve our services and ensure security</li>
-                    <li><strong>Legal Compliance:</strong> To comply with applicable laws and regulations</li>
-                </ul>
-            </div>
-
-            <div class="section" id="section4">
-                <h2>4. Information Sharing</h2>
-                
-                <p>We may share your information with:</p>
-                <ul>
-                    <li><strong>Service Providers:</strong> Third-party vendors who help deliver our services</li>
-                    <li><strong>Google Services:</strong> Google Maps SDK for location services</li>
-                    <li><strong>Business Partners:</strong> Only when necessary for order fulfillment</li>
-                </ul>
-
-                <div class="highlight">
-                    <p><strong>We do not sell your personal information</strong> to third parties for marketing purposes.</p>
-                </div>
-            </div>
-
-            <div class="section" id="section5">
-                <h2>5. Cookies and Tracking Technologies</h2>
-                
-                <p>We use cookies and similar technologies to:</p>
-                <ul>
-                    <li>Maintain security and prevent fraud</li>
-                    <li>Remember your preferences</li>
-                    <li>Analyze service usage</li>
-                    <li>Provide personalized experiences</li>
-                </ul>
-            </div>
-
-            <div class="section" id="section6">
-                <h2>6. Data Retention</h2>
-                
-                <p>We retain your personal information only as long as necessary for the purposes outlined in this policy, or as required by law. When you close your account, we will delete or anonymize your personal information, except where retention is required for legal compliance.</p>
-            </div>
-
-            <div class="section" id="section7">
-                <h2>7. Information Security</h2>
-                
-                <p>We implement appropriate technical and organizational security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
-            </div>
-
-            <div class="section" id="section8">
-                <h2>8. Information from Minors</h2>
-                
-                <p>We do not knowingly collect personal information from children under 18 years of age. If we learn that we have collected information from a minor, we will promptly delete such information from our records.</p>
-            </div>
-
-            <div class="section" id="section9">
-                <h2>9. Your Privacy Rights</h2>
-                
-                <p>Depending on your location, you may have the following rights:</p>
-                <ul>
-                    <li>Access your personal information</li>
-                    <li>Correct inaccuracies in your data</li>
-                    <li>Delete your personal information</li>
-                    <li>Object to processing of your data</li>
-                    <li>Data portability</li>
-                    <li>Withdraw consent</li>
-                </ul>
-
-                <div class="highlight">
-                    <p><strong>Account Deletion:</strong> To delete your account, email us at <a href="mailto:koyyotrabothffc001@gmail.com">koyyotrabothffc001@gmail.com</a> with "Account Deletion Request" in the subject line. We will process your request within 7 business days.</p>
-                </div>
-            </div>
-
-            <div class="section" id="section10">
-                <h2>10. Do-Not-Track Features</h2>
-                
-                <p>We do not currently respond to Do-Not-Track signals due to the lack of a uniform technology standard. If a standard is adopted in the future, we will update this policy accordingly.</p>
-            </div>
-
-            <div class="section" id="section11">
-                <h2>11. US Residents' Privacy Rights</h2>
-                
-                <p>Residents of certain US states have additional privacy rights under state laws. These may include rights to know what personal information is collected, request deletion, and opt-out of certain data processing activities.</p>
-            </div>
-
-            <div class="section" id="section12">
-                <h2>12. Updates to This Policy</h2>
-                
-                <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date.</p>
-            </div>
-
-            <div class="section" id="section13">
-                <h2>13. Contact Information</h2>
-                
-                <div class="contact-info">
-                    <h3>DIGI Express</h3>
-                    <p>Address: Ou Baek K'am, Sen Sok District, Phnom Penh, Cambodia</p>
-                    <p>Phnom Penh, Phnom Penh Capital 12101, Cambodia</p>
-                    <p>Email: <a href="mailto:koyyotrabothffc001@gmail.com">koyyotrabothffc001@gmail.com</a></p>
-                    <p>Data Subject Requests: <a href="mailto:digiexpress355@gmail.com">digiexpress355@gmail.com</a></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
+        <footer class="site-footer">
             <p>&copy; 2025 DIGI Express. All rights reserved.</p>
             <p>This privacy policy is effective as of July 17, 2025</p>
-        </div>
+        </footer>
     </div>
 
+    <button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+
     <script>
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const cards = document.querySelectorAll('.policy-card');
+        const tocLinks = document.querySelectorAll('.toc a');
+        const topButton = document.getElementById('to-top');
+        const progress = document.getElementById('scroll-progress');
+        const cardList = Array.from(cards);
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -8% 0px'
+        });
+
+        cards.forEach((card, index) => {
+            card.style.transitionDelay = `${Math.min(index * 50, 350)}ms`;
+            revealObserver.observe(card);
+        });
+
+        function setActiveToc(targetId) {
+            tocLinks.forEach((link) => {
+                const isCurrent = link.getAttribute('href') === `#${targetId}`;
+                link.classList.toggle('active', isCurrent);
+                if (isCurrent) {
+                    link.setAttribute('aria-current', 'true');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        function updateActiveToc() {
+            if (!cardList.length) {
+                return;
+            }
+
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollBottom = scrollTop + window.innerHeight;
+            const pageBottom = document.documentElement.scrollHeight;
+
+            if (scrollBottom >= pageBottom - 4) {
+                setActiveToc(cardList[cardList.length - 1].id);
+                return;
+            }
+
+            const activationLine = scrollTop + 190;
+            let currentId = cardList[0].id;
+
+            for (const card of cardList) {
+                if (card.offsetTop <= activationLine) {
+                    currentId = card.id;
+                } else {
+                    break;
+                }
+            }
+
+            setActiveToc(currentId);
+        }
+
+        function updateScrollUi() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const ratio = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+            progress.style.width = `${ratio}%`;
+            updateActiveToc();
+
+            if (scrollTop > 420) {
+                topButton.classList.add('show');
+            } else {
+                topButton.classList.remove('show');
             }
         }
 
-        // Add smooth scrolling animation for sections
-        const sections = document.querySelectorAll('.section');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        document.addEventListener('scroll', updateScrollUi, { passive: true });
+        window.addEventListener('resize', updateScrollUi);
+        updateScrollUi();
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
+        topButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        // Initialize first section
-        if (sections.length > 0) {
-            sections[0].style.opacity = '1';
-            sections[0].style.transform = 'translateY(0)';
-        }
     </script>
 </body>
 </html>
